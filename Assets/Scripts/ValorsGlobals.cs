@@ -11,4 +11,7 @@ public class ValorsGlobals
     public  static float limitInferiorY = -4f;
     public static float limitSuperiorY= 6f;
 
+    public static float limitInferiorZ = -10f;
+
+    public static float limitSuperiorZ = 100f;
 }
