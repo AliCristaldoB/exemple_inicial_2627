@@ -1,16 +1,21 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class NauJugador : MonoBehaviour
 {
 
 float vel;
 
+public TMPro.TextMeshProUGUI textEscutsJugador;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
       vel = 30f;
+      ValorsGlobals.EscutsJugadorActuals = ValorsGlobals.EscutsJugadorInicials;
+      textEscutsJugador.text = "Escuts Jugador: " + ValorsGlobals.EscutsJugadorActuals;
 
     }
 
@@ -61,6 +66,28 @@ float vel;
 
         // transform.position: és la posició de l'objecte que té assignat aquest script.
         transform.position += nouDesplacament;
+    }
+
+    private void OnTriggerEnter (Collider objecteTocat)
+    {
+
+                    // Aquest mètode es crida sol, si un objecte amb collider toca a l'actual
+
+        if (objecteTocat.CompareTag("Meteorit"))
+        {
+            Destroy(objecteTocat.gameObject);
+            //Destroy(gameObject);
+
+            if (ValorsGlobals.EscutsJugadorActuals > 0)
+            {
+                ValorsGlobals.EscutsJugadorActuals--;
+                textEscutsJugador.text = "Escuts Jugador: " + ValorsGlobals.EscutsJugadorActuals;
+            }
+            else
+            {
+                SceneManager.LoadScene("EscenaResultat");
+            }
+        }
     }
 
 }

@@ -14,4 +14,10 @@ public class ValorsGlobals
     public static float limitInferiorZ = -10f;
 
     public static float limitSuperiorZ = 100f;
+
+    public static int EscutsJugadorInicials = 3;
+
+    public static int EscutsJugadorActuals = 0;
+
 }
+
